@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>MonkeyKrew - Software Consulting Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="Input-validaton.js"></script>
+  <script src="feedbackform.js"></script>
+
+
+</head>
+
+<style media="screen">
+
+
+    .navbar {
+      z-index: 1071;
+        min-height: 4rem;
+        background-color: #563d7c;
+        box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 5%), inset 0 -1px 0 rgb(0 0 0 / 10%);
+    }
+    .mk-topnavbar{
+        margin-bottom: 6rem;
+    }
+  .logo {
+    height: 35px;
+  }
+  .navbar-toggler {
+      border: none;
+      background: 0 0!important;
+      padding: 4px 12px;
+      height: 50px;
+  }
+
+  .nav-link {
+
+      margin: 0 8px!important;
+      border-bottom: 1px solid #e7eaf4;
+      font-size: 17px;
+      outline: 0;
+      border: 0;
+      text-decoration: none;
+  }
+
+  .item-style {
+    color: #000 !important;
+  }
+
+
+.feedbackDiv {
+  border : 1px solid rgba(0,0,0,.1);
+  padding: 60px 60px 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.feedbackText-1 {
+  margin-top: 0;
+  margin-bottom: 50px;
+  color: black;
+  font-size: 25px;
+  line-height: 1.2em;
+  font-weight: 400;
+}
+
+.feedbackText-2 {
+
+
+    margin-bottom: 20px;
+    color: #646464;
+    font-size: 15px;
+    line-height: 1.35em;
+    font-weight: 400;
+
+  }
+
+  .btn-style {
+    font-size: 13px;
+  float: right;
+  /* background: aliceblue; */
+  color: #201d48;
+  /* background-color: #4CAF50; */
+  border: 1px solid rgba(0,0,0,.125);
+  /* color: white; */
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  float : right;
+  }
+
+
+  .error {
+    color : red;
+  }
+
+  /* .page-footer {
+     position: sticky;
+     top: 100%;
+  } */
+
+  body {
+    min-height: 100vh;
+  }
+
+  .page-footer {
+     position: sticky;
+     top: 100%;
+     background: #384151;
+     color: white;
+  }
+
+
+
+  .font-weight-bold {
+    font-weight: 500 !important;
+  }
+
+  .list-unstyled > li >a {
+    color: #C0C0C0;
+    margin: 0 10px 0 0;
+  }
+
+  .divider {
+      display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #FFC837;
+        margin: 1em 0;
+        padding: 0;
+  }
+</style>
+
+
+<body>
+
+  <div class="mk-topnavbar">
+      <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
+          <a href="index.html" class="navbar-brand">
+              <img src="images/mk-horizantal.png" class="logo">
+          </a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav mobileno">
+                  <!-- <a href="#" class="nav-item nav-link btn btn-outline-info  btn-style feedbacklink" data-toggle="modal" data-target="#exampleModal" style="color:white; font-weight:400;">Feedback/Complaints</a> -->
+
+
+
+                  <!-- <a href="reachus.html" class="nav-item nav-link">Reach Us</a> -->
+                  <!-- <a href="program.html" class="nav-item nav-link">Programs</a> -->
+              </div>
+              <div class="navbar-nav ml-auto">
+                <a href="solutions.html" class="nav-item nav-link item-style">Solutions</a>
+                <a href="ourplayers.html" class="nav-item nav-link item-style">Our Players</a>
+
+                <a href="reachus.html" aria-hidden="true" class="nav-item nav-link item-style">Reach Us</a>
+                <!-- <a href="ourteams.html" id="feedbacklink" class="nav-item nav-link" style="color: #FA8072;" data-toggle="modal" data-target="#exampleModalLong">Drop Critique</a> -->
+
+              </div>
+          </div>
+      </nav>
+  </div>
+
+
+  <div class="modal hide fade shadow-sm p-3 mb-5 rounded" style="top:40px" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-block" style="padding: 30px">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color : red">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6 class="modal-title text-center" stye="color: #201d48; font-size: medium;" id="exampleModalLongTitle">Is there something you want to share with us?</h6>
+
+        </div>
+        <div class="modal-body">
+          <form id="feedbackForm">
+
+           <div class="form-group">
+              <label for="formGroupExampleInput">Full name<span class="error">*</span></label>
+              <input type="text" class="form-control form-control-fedback" name="fullname" id="fullnamefeedback" required>
+         </div>
+
+             <div class="form-group">
+             <label for="exampleInputEmail1">Email Id<span class="error">*</span></label>
+             <input type="email" class="form-control form-control-fedback" id="emailfeedback" name="email" aria-describedby="emailHelp" required>
+             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+             </div>
+
+             <div class="form-group">
+             <label for="exampleFormControlTextarea2 form-control-fedback">Tell us what you think</label>
+             <textarea class="form-control rounded-0" id="queryboxfeedback" rows="2" ></textarea>
+           </div>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-outline-info btn-sm btn-style" id="feedbackbuton">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- <div class="container">
+      <h3 class="mk-title text-center" style="margin-top : 20px">MonkeyKrew - Software Consulting Services</h3>
+</div> -->
+
+<div class="container" style="margin-top:2%">
+    <div class="row">
+            <!-- <div class="col-sm-6 col-sm-offset-3">Valuable Feedback</div> -->
+            <!-- <div class="col-sm-6">
+                <img src="images/mk.png" width="200" alt="CoolBrand" class="mx-auto d-block">
+                <h3 class="mk-title text-center" style="margin-top : 20px">MonkeyKrew - Software Consulting Services</h3>
+            </div> -->
+
+            <div class="offset-md-3 col-md-6 feedbackDiv">
+              <h4 class="feedbackText-1" style="color : #B40232">Let's Chat!</h4>
+                <p class="feedbackText-2">Feel free to get in touch with us</p>
+
+
+                  <form class="form-signin needs-validation" method="post" action="#" id="reachusForm" name="reachusForm" novalidate onsubmit="return false">
+
+                  <div class="form-group">
+                     <label for="formGroupExampleInput">Full name<span class="error">*</span></label>
+                     <input type="text" name="fullname" class="form-control" id="fullName" required>
+                </div>
+
+                <div class="form-group">
+
+                <label for="formGroupExampleInput">Phone number<span class="error">*</span></label>
+                <input type="number" name="phonenumber" class="form-control" id="phoneNumber" maxlength="10" required>
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Email Id<span class="error">*</span></label>
+                    <input type="email" name="emailid" class="form-control" id="emailId" aria-describedby="emailHelp" required>
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">What are you looking for?<span class="error">*</span></label>
+                        <select class="form-control" id="selectOption" name="selectId" required>
+                          <option value="">-Select-</option>
+                          <option>Training on AWS + DevOps</option>
+                          <option>DevOps Support</option>
+                          <option>DevOps Services</option>
+                        </select>
+                      </div>
+
+                    <div class="form-group">
+                    <label for="exampleFormControlTextarea2">Your expectations<span class="error">*</span></label>
+                    <textarea class="form-control rounded-0" id="textQuery" rows="3" required></textarea>
+                  </div>
+
+
+                    <button id="sendMessage" type="button" class="btn btn-outline-info btn-sm btn-style" style="float : right">Send</button>
+                </form>
+
+              </div>
+
+
+    </div>
+
+</div>
+
+    <!-- <footer>
+      Repository maintained by <a href="https://github.com/mladenplavsic">mladenplavsic</a>
+    </footer> -->
+    <footer class="page-footer font-small stylish-color-dark pt-4" style="margin-top: 2%">
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-md-4 mx-auto">
+
+            <!-- Content -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">MonkeyKrew</h5><hr class="divider">
+            <p style="color: #C0C0C0;">Trailblazers of the modern world</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 mx-auto">
+
+            <!-- Links -->
+            <h5 class="font-weight-bold mt-3 mb-4">Quick Links</h5><hr class="divider">
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://monkeykrew.com">monkeykrew.com</a>
+              </li>
+              <li>
+                <a href="https://blog.monkeykrew.com">blog.monkeykrew.com</a>
+              </li>
+              <!-- <li>
+                <a href="https://software.monkeykrew.com">software.monkeykrew.com</a>
+              </li> -->
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 mx-auto">
+
+            <!-- Links -->
+            <h5 class="font-weight-bold mt-3 mb-4">Follow up</h5><hr class="divider">
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a><a href="#!"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a><a href="#!"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+              </li>
+              <li>
+
+              </li>
+              <li>
+
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 mx-auto">
+
+            <!-- Links -->
+            <h5 class="font-weight-bold mt-3 mb-4 widget-title">Mail Us </h5><hr class="divider">
+            <ul class="list-unstyled">
+              <li style="color: #C0C0C0;">monkeykrew.master@gmail.com</li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+      <hr>
+
+      <!-- Call to action -->
+      <ul class="list-inline text-center py-2">
+        <li class="list-inline-item">
+          <h5 class="mb-1">Let us know if we can do better</h5>
+        </li>
+        <li class="list-inline-item">
+          <!-- <a href="#!" class="btn btn-danger btn-rounded">Drop Critique!</a> -->
+          <a class="btn btn-danger btn-rounded" id="feedbacklink" class="nav-item nav-link" data-toggle="modal" data-target="#exampleModalLong">Drop Critique!</a>
+
+        </li>
+      </ul>
+      <!-- Call to action -->
+
+      <hr>
+
+      <!-- Social buttons -->
+      <!-- Social buttons -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3" style="background: #222; padding: 5px 0; color: #969696;">© 2021 Copyright:
+        <a style="color: #969696;" href="https://software.monkeykrew.com/">software.monkeykrew.com</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+        alertify.set('notifier','position', 'top-center');
+      $( "#sendMessage" ).click(function() {
+      if($("#reachusForm").valid()) {
+      // alert("submit after");
+        username = $("#fullName").val();
+        phone = $("#phoneNumber").val();
+        email = $("#emailId").val();
+        textarea = $("#textQuery").val();
+        selectoption = $("#selectOption option:selected").text();
+
+        // var dropDownSelect = {
+        //
+        // }
+      // alert("beforeajax");
+     $.ajax({
+         type: "POST",
+         url: "https://h3n0rk7hx1.execute-api.ap-south-1.amazonaws.com/qa",
+         // The key needs to match your method's input parameter (case-sensitive).
+         data: JSON.stringify({ Name:username, PhoneNumber:phone, Email:email, SelectOption:selectoption, Querybox:textarea}),
+         contentType: "application/json",
+         dataType: "json",
+         success: function(data){
+            $("#reachusForm").find("input, textarea, select").val("");
+           alertify.success("Thanks for sharing your requirement, our team will respond as soon as possible.");
+
+         },
+         error: function(errMsg) {
+             // alert ("Please enter the valid fields")
+             // frm.reset();
+         }
+     });
+   } else {
+     alertify.error("Please fill all required fields.");
+     return;
+   }
+});
+
+
+
+        $("#exampleModalLong").modal({
+            show: false,
+            backdrop: 'static'
+        });
+
+        $("#feedbacklink").click(function() {
+           $("#popup").modal("show");
+        });
+        submitfeedbackform();
+    });
+
+    </script>
+</body>
+</html>
